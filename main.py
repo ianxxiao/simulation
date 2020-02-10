@@ -1,20 +1,24 @@
-import simpy
-from sims import AdSim
+
 import streamlit as st
+import helpers
+from show_pages import show_ad_budget, show_welcome_page, show_starbucks_operation, show_corporate_valuation
+
 
 def main():
 
-    # set up layout
-    st.title("Simulator")
-    ad_budget = st.slider(label='Pick an Advertising Budget',
-                          max_value=50000,
-                          min_value=20000,
-                          step=5000)
+    sim_selection = st.sidebar.selectbox('Go To ...', helpers.OPTIONS)
 
-    ad = AdSim(ad_budget)
-    sales = ad.run_sim()
+    if sim_selection == 'Welcome Page':
+        show_welcome_page()
 
-    st.text(f'expected sales ${sales:.2f}')
+    elif sim_selection == 'Example 1: Starbucks Operation':
+        show_starbucks_operation()
+
+    elif sim_selection == 'Example 2: Advertising Budget':
+        show_ad_budget()
+
+    elif sim_selection == 'Example 3: Corporate Valuation':
+        show_corporate_valuation()
 
 
 if __name__ == '__main__':
