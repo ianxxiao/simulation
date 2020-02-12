@@ -11,13 +11,13 @@ def main():
     if sim_selection == 'Welcome Page':
         show_welcome_page()
 
-    elif sim_selection == 'Example 1: Advertising Budget':
+    elif sim_selection == 'CMO Lab: Advertising Budget':
         show_ad_budget()
 
-    elif sim_selection == 'Example 2: Starbucks Operation':
+    elif sim_selection == 'COO Lab: Starbucks Operation':
         show_starbucks_operation()
 
-    elif sim_selection == 'Example 3: Corporate Valuation':
+    elif sim_selection == 'CFO Lab: Corporate Valuation':
         show_corporate_valuation()
 
 

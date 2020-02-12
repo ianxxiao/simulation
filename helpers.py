@@ -2,22 +2,16 @@ import random
 import numpy as np
 import math
 
-OPTIONS = ("Welcome Page", "Example 1: Advertising Budget",
-           "Example 2: Starbucks Operation", "Example 3: Corporate Valuation")
-
-
-def get_break_even_prob(profit_item):
-
-    # Probability of break-even = number of item > 0 / total number of items
-    prob = 1.0
-
-    return prob
+OPTIONS = ("Welcome Page", "CMO Lab: Advertising Budget",
+           "COO Lab: Starbucks Operation", "CFO Lab: Corporate Valuation")
 
 
 def ad_calc_profit(price_item, cost_item, ad_budget):
 
     profit_item = []
+    break_even_cnt = 0
 
+    # Calculate profit for each case
     for i in range(len(price_item)):
 
         # Get all key factors
@@ -34,13 +28,19 @@ def ad_calc_profit(price_item, cost_item, ad_budget):
 
         profit_item.append(profit)
 
-    return profit_item
+        if profit >= 0.0:
+            break_even_cnt += 1
+
+    # Calculate probability of break-even
+    prob_profit = break_even_cnt / len(profit_item)
+
+    return profit_item, prob_profit
 
 
 def get_items_ad_triangular(unit_price, unit_cost, N):
 
-    price_item = np.random.triangular(size=N, left=unit_price-10.0, right=unit_price+10.0, mode=unit_price)
-    cost_item = np.random.triangular(size=N, left=unit_cost-5.0, right=unit_cost+5.0, mode=unit_cost)
+    price_item = np.random.triangular(size=N, left=unit_price-25.0, right=unit_price+10.0, mode=unit_price)
+    cost_item = np.random.triangular(size=N, left=unit_cost-5.0, right=unit_cost+10.0, mode=unit_cost)
 
     return price_item, cost_item
 

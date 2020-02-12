@@ -72,21 +72,20 @@ def show_ad_budget():
 
     # set up layout
     st.title("Welcome to the CMO Lab")
-    st.markdown("As a **Marketing leader**, you might wonder how "
+    st.markdown("As a **Marketing leader** of a famous sneaker company, you might wonder how "
                 "to best allocate your advertising budget to get the most sales return. Here are some additional context: ")
-    st.markdown("1. You can deploy 20,000 to 50,000 this year \n"
-                "2. You have three sales channels with various return \n"
+    st.markdown("1. You can deploy $20,000 to $50,000 this year \n"
+                "2. You need to help manage price and cost making and selling each shoe\n"
                 "3. Your goal is to maximize overall profit (sales revenue minus cost)")
-    st.markdown("_**Credit**: this example is built upon content from this "
+    st.markdown("_**Credit**: this example is built on content from this "
                 "[incredible book](https://www.amazon.ca/Management-Science-Art-Modeling-Spreadsheets/dp/0470530677) "
                 "and my own professional experience._")
     
     st.markdown("***")
 
-    st.markdown("This simulation will show the following: ")
-    st.markdown("1. How to design a simulation with **Influence Diagram** \n"
-                "2. How to identify the most influential factors with **Sensitivity Analysis** \n"
-                "3. How to automatically suggest the optimal budget allocation given the objective")
+    st.markdown("This simulation will focus on the following: ")
+    st.markdown("1. How to design a simulation with an **Influence Diagram** \n"
+                "2. How to interpret the outcomes in the context of business decisioning \n")
     
     st.markdown("***")
     st.markdown("** INFLUENCE DIAGRAM **")
@@ -94,7 +93,7 @@ def show_ad_budget():
                 "It helps us to conceptualize the key simulation components: inputs, key factors and "
                 "relationships, and outcomes.")
 
-    st.markdown("Here are the steps to define an Influence Diagram: ")
+    st.markdown("Here are the general steps to define an Influence Diagram: ")
     st.markdown("1. Define a **quantitative objective** \n"
                 "2. Identify the **controllable inputs** that are deterministic or with uncertainty \n"
                 "3. Map out the **key factors** and relationships from inputs to output \n"
@@ -110,16 +109,12 @@ def show_ad_budget():
     
     st.markdown("** SIMULATION **")
 
-    st.markdown("In business, the company can manage price and cost using different tactics, but they can't "
-                "fully control them due to many unpredictable factors. So, this is where uncertainty comes in."
-                "Let's decide how many times we want to run experiment (e.g. a marketing campaign) and choose "
-                "our input variables.")
+    st.markdown("Price and cost are factors with **uncertainty**. They can only be controlled to some degree due to, "
+                "for example, seasonality or relationship with suppliers. "
+                "So, this is where uncertainty comes in. ")
 
-    N = st.slider(label="Number of experiment",
-                          max_value=10000,
-                          min_value=2500,
-                          value=5000,
-                          step=1000)
+    st.markdown("Let's choose the **averages of price and cost** for our simulation. We will assume both of these factors "
+                "have a triangular probability distribution")
 
     unit_price = st.slider(label="Choose an Average Unit Price",
                           max_value=50,
@@ -131,6 +126,16 @@ def show_ad_budget():
                           min_value=10,
                           step=5)
 
+    st.markdown("Next, let's decide how many experiments (e.g. _campaigns_ in a marketing context) we want to run. "
+                "In general, the more experiment we run, the less noise there will be. But having more experiment "
+                "trades off computation time, specially in more complex cases.")
+
+    N = st.slider(label="Number of experiment",
+                          max_value=10000,
+                          min_value=2500,
+                          value=5000,
+                          step=1000)
+
     st.markdown(f"Due to uncertainty, here is a spectrum of price and cost if we'd quote the vendors {N} times.")
 
     price_item, cost_item = helpers.get_items_ad_triangular(unit_price, unit_cost, N)
@@ -139,17 +144,18 @@ def show_ad_budget():
     fig = ff.create_distplot(hist_data, group_label, bin_size=[0.5, 0.5], curve_type='normal')
     st.plotly_chart(fig)
 
+    st.markdown("Finally, let's choose a **budget**. This is a deterministic factor since we can fully control it.")
     ad_budget = st.slider(label="Choose a Advertising Budget ($'000)",
                           max_value=50,
                           min_value=20,
-                          step=5)
+                          step=1)
 
     # Calculate Profit
     st.markdown("***")
     st.markdown("** OUTCOME **")
     st.markdown(f"This is a spectrum of outcomes if you run **{N} campaigns** with **${ad_budget*1000} budget** "
-                f"when average unit prices is at **${unit_price}** and unit cost is at **${unit_cost}**")
-    profit_item = helpers.ad_calc_profit(price_item, cost_item, ad_budget)
+                f"when the average unit prices is at **${unit_price}** and unit cost is at **${unit_cost}**.")
+    profit_item, prob_profit = helpers.ad_calc_profit(price_item, cost_item, ad_budget)
     hist_data = [profit_item]
     group_label = ['estimated profit']
     fig = ff.create_distplot(hist_data, group_label, bin_size=[3000], curve_type='normal')
@@ -158,26 +164,26 @@ def show_ad_budget():
     # Analysis
     st.markdown("***")
     st.markdown("** ANALYSIS **")
+    st.markdown("So, what does this mean? Here are some key highlights: ")
     st.text(f"Average Profit: ${sum(profit_item) / len(profit_item): .2f}")
-    st.text(f"Probability of break-even (make over $0 profit): {helpers.get_break_even_prob(profit_item)}")
-
+    st.text(f"Probability of break-even (make over $0 profit): {prob_profit*100: .2f}%")
+    st.text(f"Average Return (ROI) of Marketing Budget: "
+            f"{(sum(profit_item) / len(profit_item) - ad_budget*1000) *100 / (ad_budget*1000): .2f}%")
+    
+    st.markdown("***")
+    st.markdown("If you were in the CMO's shoes, a few fruit for thoughts:")
+    st.markdown(
+                "1. what is the minimum budget allocation to make a positive ROI? \n"
+                "2. what are the right price and cost? (note that it will be difficult and expensive to lock in "
+                "the highest price and lowest cost) \n"
+                "3. what are some tactical and simples ways to improve ROI? \n")
 
 def show_starbucks_operation():
 
     # set up layout
     st.title("Welcome to the COO Lab")
-    st.markdown(" As a leader in Operation, you might wonder how "
-                "to best allocate your advertising budget get the most sales return.")
+    st.markdown("Coming soon ...")
 
-    ad_budget = st.slider(label="Pick an Advertising Budget ($'000)",
-                          max_value=50,
-                          min_value=20,
-                          step=5)
-
-    ad = AdSim(ad_budget)
-    sales = ad.run_sim()
-
-    st.text(f"expected sales ${sales:.2f}")
 
 
 def show_corporate_valuation():
