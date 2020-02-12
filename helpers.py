@@ -2,7 +2,7 @@ import random
 import numpy as np
 import math
 
-OPTIONS = ("Welcome Page", "CMO Lab: Advertising Budget",
+OPTIONS = ("Welcome Page", "CMO Lab: Nike Marketing",
            "COO Lab: Starbucks Operation", "CFO Lab: Corporate Valuation")
 
 

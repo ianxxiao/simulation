@@ -11,7 +11,7 @@ def main():
     if sim_selection == 'Welcome Page':
         show_welcome_page()
 
-    elif sim_selection == 'CMO Lab: Advertising Budget':
+    elif sim_selection == 'CMO Lab: Nike Marketing':
         show_ad_budget()
 
     elif sim_selection == 'COO Lab: Starbucks Operation':
