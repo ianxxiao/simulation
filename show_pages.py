@@ -59,13 +59,15 @@ def show_welcome_page():
     st.markdown("1. what is the probability of achieving the acceptable outcomes? Is it good enough to proceed? \n"
                 "2. what is the probability of achieving sub-optimal outcomes? And how do we hedge against that? \n"
                 "3. what factor has the largest impact on the outcome? How can we influence it? \n")
+
+    st.markdown("***")
     st.markdown(
-        "**Next Step:** Use the panel on the left to choose an example and see how we apply these analysis to the outcomes "
-        "from various real-world examples.")
-    st.markdown("We will learn tools like: ")
-    st.markdown("1. Influence Diagram \n"
-                "2. Sensitivity Analysis \n"
-                "3. Cumulative Probability")
+        "**Next Step:** Use the panel on the left to learn key techniques in designing and analyzing simulations "
+        "with three real-world problems.")
+    st.markdown("Each example will focus on a technique: ")
+    st.markdown("1. CMO Lab: Influence Diagram \n"
+                "2. COO Lab: Sensitivity Analysis \n"
+                "3. CFO Lab: Optimization in Simulation")
 
 
 def show_ad_budget():
