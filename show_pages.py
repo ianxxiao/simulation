@@ -8,10 +8,11 @@ import helpers
 def show_welcome_page():
 
     st.title("Welcome.")
-    st.markdown("You will learn the following concepts:")
-    st.markdown("1. History of Monte Carlo Method \n "
-                "2. High Level Montel Carlo Process \n"
-                "3. Interactive Example")
+    st.markdown("You will find the following in this section:")
+    st.markdown("1. The History of Monte Carlo Method \n "
+                "2. A High Level Montel Carlo Process \n"
+                "3. An Interactive Example")
+    st.markdown("If you are familiar with the basics, use the panel on the left to see some real-life examples.")
 
     # HISTORY
     st.markdown("***")
