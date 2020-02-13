@@ -28,8 +28,11 @@ def show_welcome_page():
                 "As a practical alternative, Monte Carlo method allows us to take a **probability approach**.")
 
     image = Image.open('./asset/monte-carlo-process.png')
-    st.image(image, caption='Monte Carlo Simulation Process', format='PNG',
-             use_column_width=True)
+    st.image(image, format='PNG', use_column_width=True)
+
+    st.markdown("A more technical explanation ...")
+    st.video("https://youtu.be/7TybpwBlcMk")
+
 
     # ILLUSTRATION OF PROBABILITY DISTRIBUTION
     st.markdown("***")
