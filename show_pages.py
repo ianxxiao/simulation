@@ -100,8 +100,10 @@ def show_ad_budget():
                 "2. Identify the **controllable inputs** that are deterministic or with uncertainty \n"
                 "3. Map out the **key factors** and relationships from inputs to output \n"
                 "4. Identify the **non-trivial relationships** (e.g. f(x): advertising budget to unit sold) \n"
-                "5. Get past data to represent the factors and approximate the relationships; make sensible assumptions "
-                "if needed")
+                "5. Get some **past data** to represent the factors and approximate the relationships; "
+                "make sensible **assumptions** "
+                "if needed (once you grasp the Monte Carlo concept, this step is arguably the most important. "
+                "Garbage data & assumptions, garbage outcome.)")
     
     image = Image.open('./asset/Influence-Diagram-Ad-Budget.png')
     st.image(image, caption='Influence Diagram of Ad Budget Problem', format='PNG',
