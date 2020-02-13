@@ -1,9 +1,8 @@
 import streamlit as st
-import matplotlib.pyplot as plt
 import plotly.figure_factory as ff
 from PIL import Image
-from sims import AdSim
 import helpers
+
 
 def show_welcome_page():
 
@@ -16,11 +15,18 @@ def show_welcome_page():
 
     # HISTORY
     st.markdown("***")
+    st.markdown("** The Short History **")
     st.video("https://youtu.be/ioVccVC_Smg")
 
     # SIMULATION ARCHITECTURE
     st.markdown("***")
-    st.markdown("Monte Carlo Simulation can be represented in terms of input, transformation, and outcome.")
+    st.markdown("** The Monte Carlo Process**")
+    st.markdown("The goal of Monte Carlo Method is to **approximate an expected outcome** that is difficult to "
+                "calculate precisely. In real life, it's often impossible to come up with a single equation to "
+                "describe a system from inputs to outputs; even we can, it will be time consuming to "
+                "calculate and analyze all possible outcome scenarios. "
+                "As a practical alternative, Monte Carlo method allows us to take a **probability approach**.")
+
     image = Image.open('./asset/monte-carlo-process.png')
     st.image(image, caption='Monte Carlo Simulation Process', format='PNG',
              use_column_width=True)
@@ -183,12 +189,12 @@ def show_ad_budget():
                 "the highest price and lowest cost) \n"
                 "3. what are some tactical and simples ways to improve ROI? \n")
 
+
 def show_starbucks_operation():
 
     # set up layout
     st.title("Welcome to the COO Lab")
     st.markdown("Coming soon ...")
-
 
 
 def show_corporate_valuation():
