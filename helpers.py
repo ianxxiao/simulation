@@ -3,7 +3,9 @@ import numpy as np
 import math
 
 OPTIONS = ("Welcome Page", "CMO Lab: Nike Marketing",
-           "COO Lab: Starbucks Operation", "CFO Lab: Corporate Valuation")
+           "COO Lab: Starbucks Operation",
+           "CFO Lab: Corporate Valuation",
+           "CPO Lab: Product Portfolio")
 
 
 def ad_calc_profit(price_item, cost_item, ad_budget):

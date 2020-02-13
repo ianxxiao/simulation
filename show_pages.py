@@ -72,32 +72,34 @@ def show_welcome_page():
 
     st.markdown("***")
     st.markdown(
-        "**Next Step:** Use the panel on the left to learn key techniques in designing and analyzing simulations "
-        "with three real-world problems.")
-    st.markdown("Each example will focus on a technique: ")
+        "**Next Step:** Use the panel on the left to learn key techniques of designing and analyzing simulations "
+        "with three real-world business problems.")
+    st.markdown("Each example focuses on a technique: ")
     st.markdown("1. CMO Lab: Influence Diagram \n"
                 "2. COO Lab: Sensitivity Analysis \n"
-                "3. CFO Lab: Optimization in Simulation")
+                "3. CFO Lab: Optimization in Simulation \n"
+                "4. CPO Lab: Machine Learning in Simulation")
 
 
 def show_ad_budget():
 
     # set up layout
     st.title("Welcome to the CMO Lab")
-    st.markdown("As a **Marketing leader** of a famous sneaker company, you might wonder how "
+    st.markdown("As a **Marketing leader** at Nike, you might wonder how "
                 "to best allocate your advertising budget to get the most sales return. Here are some additional context: ")
     st.markdown("1. You can deploy $20,000 to $50,000 this year \n"
                 "2. You need to help manage price and cost making and selling each shoe\n"
                 "3. Your goal is to maximize overall profit (sales revenue minus cost)")
-    st.markdown("_**Credit**: this example is built on content from this "
+    st.markdown("_**Note**: this example is built on content from this "
                 "[incredible book](https://www.amazon.ca/Management-Science-Art-Modeling-Spreadsheets/dp/0470530677) "
-                "and my own professional experience._")
+                "and my own professional experience._ All data used in this example is illustrative, "
+                "it does not represent Nike operation.")
     
     st.markdown("***")
 
-    st.markdown("This simulation will focus on the following: ")
+    st.markdown("This simulation focuses on the following: ")
     st.markdown("1. How to design a simulation with an **Influence Diagram** \n"
-                "2. How to interpret the outcomes in the context of business decisioning \n")
+                "2. How to interpret the outcomes to support business decisioning \n")
     
     st.markdown("***")
     st.markdown("** INFLUENCE DIAGRAM **")
@@ -185,7 +187,7 @@ def show_ad_budget():
             f"{(sum(profit_item) / len(profit_item) - ad_budget*1000) *100 / (ad_budget*1000): .2f}%")
     
     st.markdown("***")
-    st.markdown("If you were in the CMO's shoes, a few fruit for thoughts:")
+    st.markdown("If you were a Data Scientist advising the CMO, how would you address the following:")
     st.markdown(
                 "1. what is the minimum budget allocation to make a positive ROI? \n"
                 "2. what are the right price and cost? (note that it will be difficult and expensive to lock in "
@@ -202,4 +204,9 @@ def show_starbucks_operation():
 
 def show_corporate_valuation():
     st.title("Welcome to the CFO Lab")
+    st.markdown("Coming soon ...")
+
+
+def show_product_allocation():
+    st.title("Welcome to the CPO Lab")
     st.markdown("Coming soon ...")

@@ -1,7 +1,8 @@
 
 import streamlit as st
 import helpers
-from show_pages import show_ad_budget, show_welcome_page, show_starbucks_operation, show_corporate_valuation
+from show_pages import show_ad_budget, show_welcome_page, show_starbucks_operation, show_corporate_valuation, \
+    show_product_allocation
 
 
 def main():
@@ -19,6 +20,12 @@ def main():
 
     elif sim_selection == 'CFO Lab: Corporate Valuation':
         show_corporate_valuation()
+
+    elif sim_selection == 'CPO Lab: Product Portfolio':
+        show_product_allocation()
+
+    else:
+        st.markdown("Something went wrong. We are looking into it.")
 
 
 if __name__ == '__main__':
