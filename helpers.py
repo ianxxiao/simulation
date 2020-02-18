@@ -47,18 +47,26 @@ def get_items_ad_triangular(unit_price, unit_cost, N):
     return price_item, cost_item
 
 
-def get_items(center, N):
+def get_items(value_range, N, shape):
 
-    return np.random.normal(size=N, loc=center)
+    if shape == "Normal":
+        return np.random.normal(size=N, loc= (value_range[0] + value_range[1])/2)
+
+    elif shape == "Triangle":
+        return np.random.triangular(size=N, left=value_range[0], right=value_range[1],
+                                    mode=(value_range[0] + value_range[1])/2)
+
+    elif shape == "Uniform":
+        return np.random.uniform(size=N, low=value_range[0], high=value_range[1])
 
 
-def apply_function(input_items, distribution = 'Uniform'):
+def apply_function(input_items, distribution):
 
-    if distribution == 'Uniform':
+    if distribution == 'Secret Formula 1':
         return np.sqrt(input_items + 1) * 2 + np.random.uniform(size=len(input_items), low=1, high=5)
 
-    elif distribution == 'Poisson':
+    elif distribution == 'Secret Formula 2':
         return np.sqrt(input_items+1)*2 + np.random.poisson(size=len(input_items))
 
-    elif distribution == 'Triangular':
+    elif distribution == 'Secret Formula 3':
         return np.sqrt(input_items + 1) * 2 + np.random.triangular(size=len(input_items), left=1, right=5, mode=2.5)

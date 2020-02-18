@@ -36,29 +36,32 @@ def show_welcome_page():
 
     # ILLUSTRATION OF PROBABILITY DISTRIBUTION
     st.markdown("***")
-    st.markdown("**Step 1: Define input(s) of uncertainty ... **")
-    center = st.slider("Pick the average value of the input", min_value=40,
-                       max_value=50, value=45, step=1)
-    N = st.slider("Decide how many samples (N): ", min_value=100, max_value=5000, value=500, step=100)
-    st.markdown(f"We draw {N} samples "
-                f"with the densest population around {center} with an uncertainty distribution of [normal distribution]"
-                f"(https://en.wikipedia.org/wiki/Normal_distribution).")
+    st.markdown("**Step 1: Define input(s) with uncertainty ... **")
 
-    input_items = helpers.get_items(center, N)
+    value_range = st.slider("Pick the range of value that represent the input", min_value=20,
+                       max_value=100, value=(45, 60), step=1)
+    shape = st.selectbox("Pick a distribution that represent the uncertainty",
+                         ("Normal", "Triangle", "Uniform"))
+    N = st.slider("Choose how many samples (N): ", min_value=100, max_value=10000, value=500, step=100)
+
+    st.markdown(f"We drew {N} samples "
+                f"with an **uncertainty** represented by a **{shape}** distribution.")
+
+    input_items = helpers.get_items(value_range, N, shape)
+
     hist_data = [input_items]
-    group_label = ['your choice']
+    group_label = ['Input']
     fig = ff.create_distplot(hist_data, group_label, bin_size=[0.5])
     st.plotly_chart(fig)
 
-    st.markdown("**Step 2: Apply Some Transformation to Each Sample ...**")
-    distribution = st.selectbox("Pick a Distribution to Represent Uncertainty",
-                                ("Uniform", "Poisson", "Triangular"))
-    st.markdown(f"We apply a transformation to the population with "
-                f"numbers drawn from a _{distribution}_ distribution.")
+    st.markdown("**Step 2: Apply Some Transformation ...**")
+    distribution = st.selectbox("Pick a distribution type",
+                                ("Secret Formula 1", "Secret Formula 2", "Secret Formula 3"))
+    st.markdown(f"We apply **{distribution}** (some non-linear functions and randomness) to each of the input samples ...")
 
     output_items = helpers.apply_function(input_items, distribution)
     hist_data = [output_items]
-    group_label = ['output']
+    group_label = ['Output']
     fig = ff.create_distplot(hist_data, group_label, bin_size=[0.1])
     st.plotly_chart(fig)
 
@@ -167,6 +170,12 @@ def show_ad_budget():
                           max_value=50,
                           min_value=20,
                           step=1)
+
+    # Explain Transformation
+    st.markdown("***")
+    st.markdown("** TRANSFORMATION **")
+    st.markdown("According to the Influence Diagram, we know the relationships between all input variables "
+                "and the outcome.")
 
     # Calculate Profit
     st.markdown("***")
