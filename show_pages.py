@@ -80,6 +80,8 @@ def show_welcome_page():
                 "3. CFO Lab: Optimization in Simulation \n"
                 "4. CPO Lab: Machine Learning in Simulation")
 
+    show_footer()
+
 
 def show_ad_budget():
 
@@ -194,6 +196,8 @@ def show_ad_budget():
                 "the highest price and lowest cost) \n"
                 "3. what are some tactical and simples ways to improve ROI? \n")
 
+    show_footer()
+
 
 def show_starbucks_operation():
 
@@ -213,3 +217,13 @@ def show_product_allocation():
     st.title("Welcome to the CPO Lab")
     st.markdown("Coming soon ... Sign up [here](https://docs.google.com/forms/d/e/"
                 "1FAIpQLSfL57Eb6Kd7fK3OLfXNUENa3H0rLhmcgxnLQp6SwSWNZ_pLaQ/viewform?usp=sf_link) to get notified.")
+
+
+def show_footer():
+
+    st.markdown("***")
+    st.markdown("**Like this tool?** Follow me on [Medium](https://medium.com/@ianxiao), "
+                "[LinkedIn](https://www.linkedin.com/in/ianxiao/), and "
+                "[Twitter](https://twitter.com/ian_xxiao).")
+    st.markdown("If you'd like to help with the cost of running this tool, support me on "
+                "[Patreon](https://www.patreon.com/indieml).")
