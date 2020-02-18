@@ -55,7 +55,7 @@ def show_welcome_page():
     st.plotly_chart(fig)
 
     st.markdown("**Step 2: Apply Some Transformation ...**")
-    distribution = st.selectbox("Pick a distribution type",
+    distribution = st.selectbox("Pick a transformation",
                                 ("Secret Formula 1", "Secret Formula 2", "Secret Formula 3"))
     st.markdown(f"We apply **{distribution}** (some non-linear functions and randomness) to each of the input samples ...")
 
