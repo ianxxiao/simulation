@@ -215,17 +215,23 @@ def show_starbucks_operation():
     st.markdown("Coming soon ... Sign up [here](https://docs.google.com/forms/d/e/"
                 "1FAIpQLSfL57Eb6Kd7fK3OLfXNUENa3H0rLhmcgxnLQp6SwSWNZ_pLaQ/viewform?usp=sf_link) to get notified.")
 
+    show_footer()
+
 
 def show_corporate_valuation():
     st.title("Welcome to the CFO Lab")
     st.markdown("Coming soon ... Sign up [here](https://docs.google.com/forms/d/e/"
                 "1FAIpQLSfL57Eb6Kd7fK3OLfXNUENa3H0rLhmcgxnLQp6SwSWNZ_pLaQ/viewform?usp=sf_link) to get notified.")
 
+    show_footer()
+
 
 def show_product_allocation():
     st.title("Welcome to the CPO Lab")
     st.markdown("Coming soon ... Sign up [here](https://docs.google.com/forms/d/e/"
                 "1FAIpQLSfL57Eb6Kd7fK3OLfXNUENa3H0rLhmcgxnLQp6SwSWNZ_pLaQ/viewform?usp=sf_link) to get notified.")
+
+    show_footer()
 
 
 def show_footer():
