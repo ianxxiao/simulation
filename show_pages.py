@@ -52,7 +52,7 @@ def show_welcome_page():
     hist_data = [input_items]
     group_label = ['Input']
     fig = ff.create_distplot(hist_data, group_label, bin_size=[0.5])
-    st.plotly_chart(fig)
+    st.plotly_chart(fig, use_container_width=True)
 
     st.markdown("**Step 2: Apply Some Transformation ...**")
     distribution = st.selectbox("Pick a transformation",
@@ -63,7 +63,7 @@ def show_welcome_page():
     hist_data = [output_items]
     group_label = ['Output']
     fig = ff.create_distplot(hist_data, group_label, bin_size=[0.1])
-    st.plotly_chart(fig)
+    st.plotly_chart(fig, use_container_width=True)
 
     # ANALYZE RESULTS
     st.markdown("**Step 3: Analyze the Outcome ...**")
@@ -163,7 +163,7 @@ def show_ad_budget():
     hist_data = [price_item, cost_item]
     group_label = ['Unit Price', 'Unit Cost']
     fig = ff.create_distplot(hist_data, group_label, bin_size=[0.5, 0.5], curve_type='normal')
-    st.plotly_chart(fig)
+    st.plotly_chart(fig, use_container_width=True)
 
     st.markdown("Finally, let's choose a **budget**. This is a deterministic factor since we can fully control it.")
     ad_budget = st.slider(label="Choose a Advertising Budget ($'000)",
@@ -186,7 +186,7 @@ def show_ad_budget():
     hist_data = [profit_item]
     group_label = ['estimated profit']
     fig = ff.create_distplot(hist_data, group_label, bin_size=[3000], curve_type='normal')
-    st.plotly_chart(fig)
+    st.plotly_chart(fig, use_container_width=True)
     
     # Analysis
     st.markdown("***")
